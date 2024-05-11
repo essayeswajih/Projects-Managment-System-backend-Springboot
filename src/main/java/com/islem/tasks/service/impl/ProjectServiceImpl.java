@@ -1,6 +1,7 @@
 package com.islem.tasks.service.impl;
 
 import com.islem.tasks.dto.ProjectDto;
+import com.islem.tasks.entity.Project;
 import com.islem.tasks.exception.InvalidEntityException;
 import com.islem.tasks.exception.EntityNotFoundException;
 import com.islem.tasks.exception.ErrorCodes;
@@ -79,4 +80,8 @@ public class ProjectServiceImpl implements ProjectService {
     //start
 
     //end
+    public List<Project>findProjectsEndingToday(){
+        return projectRepository.findProjectsEndingToday();
+    }
+
 }

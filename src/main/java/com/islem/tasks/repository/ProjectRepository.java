@@ -20,6 +20,8 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
     @Query("select c from Project c inner join Tasks t on t.project.id = c.id where t.startDate >= :startDate and t.startDate <= :endDate and c.user.id = :userId")
     List<Project> getAllTasksByProjectsForToday(@Param("startDate") ZonedDateTime startDate, @Param("endDate") ZonedDateTime endDate, @Param("userId") Integer userId);
 
+    @Query("SELECT p FROM Project p WHERE FUNCTION('DATE_FORMAT', p.endDate, '%Y-%m-%d') = FUNCTION('DATE_FORMAT', CURRENT_DATE(), '%Y-%m-%d')")
+    List<Project> findProjectsEndingToday();
 
 
 }

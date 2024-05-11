@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -34,6 +34,11 @@ public class Project implements Serializable {
     @OneToMany(mappedBy="project", fetch = FetchType.EAGER)
     private List<Tasks> tasksList;
 
+    @Column(name = "startDate")
+    private Date startDate;
+
+    @Column(name = "endDate")
+    private Date endDate;
 
 }
 
